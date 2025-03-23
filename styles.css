@@ -1,0 +1,140 @@
+body.crt {
+    animation: flicker 0.15s infinite;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+body.crt * {
+    text-shadow: 0 0 4px #0095ff;
+    overflow-y: hidden;
+}
+
+body.crt::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 9999;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+body.crt::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9998;
+    background: linear-gradient(
+        to bottom,
+        rgba(16, 67, 233, 0.1) 0%,
+        rgba(0,0,0,0.1) 10%,
+        rgba(0,0,0,0.3) 50%,
+        rgba(0,0,0,0.1) 90%,
+        rgba(16, 67, 233, 0.1) 100%
+    );
+    pointer-events: none;
+    border-radius: 0.5%;
+}
+
+#noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; 
+    opacity: 0.05;
+    pointer-events: none;
+    animation: scanline 6s linear infinite;
+}
+
+.image-container {
+    position: relative;
+    height: 1000px;
+    top: 50%;
+    transform: translateY(0%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.crt img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-boxes {
+    position: fixed;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    top: 90px;
+}
+
+.nav-box {
+    width: 100px;
+    padding: 5px;
+    border: 3px solid #8bdffc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 8px #8bdffc;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.nav-box:hover {
+    background: rgba(139, 223, 252, 0.5);
+    box-shadow: 0 0 15px #8bdffc;
+}
+
+/* Animations */
+@keyframes flicker {
+    0% { opacity: 0.90; }
+    50% { opacity: 1; }
+    100% { opacity: 0.95; }
+}
+
+@keyframes scanline {
+    0% { background-position: 0 100%; }
+    100% { background-position: 0 0; }
+}

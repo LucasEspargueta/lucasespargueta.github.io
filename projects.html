@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>About Me</title>
-    <link rel="stylesheet" href="styles.css">    
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="assets/logo_transparent.png">
     <style>
         body.crt {
@@ -18,6 +18,8 @@
             position: relative;
             min-height: 100vh;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         body.crt::before,
@@ -33,22 +35,22 @@
         body.crt::before {
             left: 38px;
             background: linear-gradient(to right,
-                    #8bdffc 3px, 
+                    #8bdffc 3px,
                     transparent 3px,
                     transparent 23px,
+                    #000000 23px,
                     #8bdffc 23px,
-                    #8bdffc 23px, 
                     transparent 26px);
         }
 
         body.crt::after {
             right: 158px;
             background: linear-gradient(to left,
-                    #8bdffc 3px, 
+                    #8bdffc 3px,
                     transparent 3px,
                     transparent 23px,
+                    #000000 23px,
                     #8bdffc 23px,
-                    #8bdffc 23px, 
                     transparent 26px);
         }
 
@@ -76,6 +78,16 @@
 
         }
 
+        .header h2 {
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #8bdffc;
+            margin: 0;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
         .header img {
             float: right;
             height: 60px;
@@ -84,11 +96,16 @@
         }
 
         .content {
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
+            width: 90.2%;
+            height: 100%;
             position: relative;
             z-index: 1;
+            padding-left: 3%;
+            padding-right: 3%;
+            display: flex;
+            flex-direction: column;
+            gap: 620px;
+
         }
 
         .nav-boxes {
@@ -103,7 +120,7 @@
         .nav-box {
             width: 100px;
             padding: 5px;
-            border: 3px solid #8bdffc;
+            border: 3px solid rgb(139, 223, 252);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -122,6 +139,40 @@
             text-shadow: 0 0 4px #8bdffc;
 
         }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            flex-direction: column;
+            grid-gap: 30px;
+            width: 1000px;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 20%;
+            left: 20%;
+            
+        }
+
+        .grid-container img {
+            height: 3;
+            width: 4;
+            object-fit: fill;
+            max-height: 208px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffff;
+            border: 2px solid #8bdffc;
+            padding: 4px;
+            height: 400px;
+            text-align: justify;
+        }
+
     </style>
 </head>
 
@@ -129,25 +180,36 @@
     <div id="noise"></div>
 
     <header class="header">
-        <h1>About me</h1>
+        <h1>Projects</h1>
         <img src="assets/logo_transparent.png" alt="Lucas Logo">
     </header>
 
     <div class="content">
-        <div style="text-align: justify;">
-            <img src="assets\eu.png" height="300" width="auto" alt="A fat Yoshi from the Super Mario franchise." style="border-radius: 9px;">
-            <figcaption style="color: white; text-align: center;">Me.</figcaption>
-            <p style="color: white; margin: 0; padding-top: 2px; padding-left: 2px; ">My name is Lucas and I have a <a href="https://sigarra.up.pt/fcup/en/CUR_GERAL.CUR_VIEW?pv_ano_lectivo=2021&pv_curso_id=865&pv_origem=CUR&pv_tipo_cur_sigla=L" style="color: #fa9790;">Bachelor's degree in Chemistry @FCUP</a>.</p>
-            <p style="color: white; margin: 0; padding-top: 2px; padding-left: 2px; ">I'm currently attending the <a href="https://sigarra.up.pt/fcup/en/cur_geral.cur_view?pv_ano_lectivo=2023&pv_origem=CUR&pv_tipo_cur_sigla=M&pv_curso_id=958" style="color: #fa9790;">Master's degree in Chemistry @FCUP</a>.</p>
-            <p> </p>
-            <p style="color: white; margin: 0; padding-top: 2px; padding-left: 2px; ">Connect with me on <a href = "https://www.linkedin.com/in/jo%C3%A3omendes2k/" style="color: #fa9790;">LinkedIn</a>.</p>
-          </div>
+        <p>Some projects i did in my free time. Click on the images to see more about the projects.</p>
+        
+        <div class="grid-container" style="display: grid;">
+            <a href='https://github.com/LucasEspargueta/XRD-Viewer'">
+                <img src="assets/projects/XRD_viewer.png" alt="XRD Viewer">
+                <h2>XRD Viewer</h2>
+                <p>A program that simulates XRD patterns using .cif files.</p>
+            </a>
+            <a href='https://github.com/LucasEspargueta/discord-scraper-bot'">
+                <img src="assets/projects/scrapperbot.webp" alt="A totally not random image."> 
+                <h2>Scrapper Discord Bot</h2>
+                <p>Discord bot written in typescript that stores sent videos in a database.</p>
+            </a>
+            <a href='https://github.com/LucasEspargueta/QC2023'">
+                <img src="assets/projects/XRD_viewer.png" alt="XRD Viewer">
+                <h2>QC 2023</h2>
+                <p>Project done for the Computational Chemistry class, extracts adsorbed ions from .gro files.</p>
+            </a>
+        </div>
     </div>
 
     <div class="nav-boxes">
         <div class="nav-box" onclick="window.location.href='index.html'">Homepage</div>
+        <div class="nav-box" onclick="window.location.href='about.html'">About</div>
         <div class="nav-box" onclick="window.location.href='cv.html'">CV</div>
-        <div class="nav-box" onclick="window.location.href='projects.html'">Projects</div>
 
     </div>
 
