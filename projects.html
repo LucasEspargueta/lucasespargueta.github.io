@@ -8,11 +8,6 @@
     <link rel="icon" href="assets/logo_transparent.png">
     <style>
         body.crt {
-            animation: flicker 0.15s infinite;
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Courier New', monospace;
-            margin: 0;
             padding-left: 38px;
             padding-right: 38px;
             position: relative;
@@ -38,7 +33,7 @@
                     #8bdffc 3px,
                     transparent 3px,
                     transparent 23px,
-                    #000000 23px,
+                    #8bdffc 23px,
                     #8bdffc 23px,
                     transparent 26px);
         }
@@ -49,7 +44,7 @@
                     #8bdffc 3px,
                     transparent 3px,
                     transparent 23px,
-                    #000000 23px,
+                    #8bdffc 23px,
                     #8bdffc 23px,
                     transparent 26px);
         }
@@ -135,11 +130,6 @@
             box-shadow: 0 0 15px #8bdffc;
         }
 
-        body.crt * {
-            text-shadow: 0 0 4px #8bdffc;
-
-        }
-
         .grid-container {
             display: grid;
             grid-template-columns: auto auto auto;
@@ -151,7 +141,7 @@
             position: fixed;
             top: 20%;
             left: 20%;
-            
+
         }
 
         .grid-container img {
@@ -172,7 +162,6 @@
             height: 400px;
             text-align: justify;
         }
-
     </style>
 </head>
 
@@ -186,20 +175,20 @@
 
     <div class="content">
         <p>Some projects i did in my free time. Click on the images to see more about the projects.</p>
-        
+
         <div class="grid-container" style="display: grid;">
             <a href='https://github.com/LucasEspargueta/XRD-Viewer'">
-                <img src="assets/projects/XRD_viewer.png" alt="XRD Viewer">
+                <img src=" assets/projects/XRD_viewer.png" alt="XRD Viewer">
                 <h2>XRD Viewer</h2>
                 <p>A program that simulates XRD patterns using .cif files.</p>
             </a>
             <a href='https://github.com/LucasEspargueta/discord-scraper-bot'">
-                <img src="assets/projects/scrapperbot.webp" alt="A totally not random image."> 
+                <img src=" assets/projects/scrapperbot.webp" alt="A totally not random image.">
                 <h2>Scrapper Discord Bot</h2>
                 <p>Discord bot written in typescript that stores sent videos in a database.</p>
             </a>
             <a href='https://github.com/LucasEspargueta/QC2023'">
-                <img src="assets/projects/XRD_viewer.png" alt="XRD Viewer">
+                <img src=" assets/projects/XRD_viewer.png" alt="XRD Viewer">
                 <h2>QC 2023</h2>
                 <p>Project done for the Computational Chemistry class, extracts adsorbed ions from .gro files.</p>
             </a>
@@ -213,30 +202,7 @@
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const generateNoise = () => {
-                let canvas = document.createElement('canvas');
-                let ctx = canvas.getContext('2d');
-                canvas.width = 100;
-                canvas.height = 100;
-
-                for (let i = 0; i < canvas.width; i++) {
-                    for (let j = 0; j < canvas.height; j++) {
-                        let rgb = Math.floor(Math.random() * 50);
-                        ctx.fillStyle = `rgb(${rgb},${rgb},${rgb})`;
-                        ctx.fillRect(i, j, 1, 1);
-                    }
-                }
-                return canvas.toDataURL();
-            };
-
-            const noiseContainer = document.getElementById('noise');
-            if (noiseContainer) {
-                noiseContainer.style.backgroundImage = `url(${generateNoise()})`;
-            }
-        });
-    </script>
+    <script src="crt-effect.js"></script>
 </body>
 
 </html>

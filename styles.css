@@ -1,15 +1,15 @@
 body.crt {
-    animation: flicker 0.15s infinite;
+    animation: flicker 0.15s infinite; 
     background-color: #000000;
     color: #ffffff;
     font-family: 'Courier New', monospace;
     margin: 0;
     padding: 20px;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body.crt * {
-    text-shadow: 0 0 4px #0095ff;
+    text-shadow: 0 0 4px #8bdffc;
     overflow-y: hidden;
 }
 
@@ -39,11 +39,11 @@ body.crt::before {
     z-index: 9998;
     background: linear-gradient(
         to bottom,
-        rgba(16, 67, 233, 0.1) 0%,
+        rgba(0, 67, 255, 0.1) 0%,
         rgba(0,0,0,0.1) 10%,
         rgba(0,0,0,0.3) 50%,
         rgba(0,0,0,0.1) 90%,
-        rgba(16, 67, 233, 0.1) 100%
+        rgba(0, 67, 255, 0.1) 100%
     );
     pointer-events: none;
     border-radius: 0.5%;

@@ -8,11 +8,6 @@
     <link rel="icon" href="assets/logo_transparent.png">
     <style>
         body.crt {
-            animation: flicker 0.15s infinite;
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Courier New', monospace;
-            margin: 0;
             padding-left: 38px;
             padding-right: 38px;
             position: relative;
@@ -117,11 +112,6 @@
             background: rgba(139, 223, 252, 0.5);
             box-shadow: 0 0 15px #8bdffc;
         }
-
-        body.crt * {
-            text-shadow: 0 0 4px #8bdffc;
-
-        }
     </style>
 </head>
 
@@ -151,30 +141,7 @@
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const generateNoise = () => {
-                let canvas = document.createElement('canvas');
-                let ctx = canvas.getContext('2d');
-                canvas.width = 100;
-                canvas.height = 100;
-
-                for (let i = 0; i < canvas.width; i++) {
-                    for (let j = 0; j < canvas.height; j++) {
-                        let rgb = Math.floor(Math.random() * 50);
-                        ctx.fillStyle = `rgb(${rgb},${rgb},${rgb})`;
-                        ctx.fillRect(i, j, 1, 1);
-                    }
-                }
-                return canvas.toDataURL();
-            };
-
-            const noiseContainer = document.getElementById('noise');
-            if (noiseContainer) {
-                noiseContainer.style.backgroundImage = `url(${generateNoise()})`;
-            }
-        });
-    </script>
+    <script src="crt-effect.js"></script>
 </body>
 
 </html>
