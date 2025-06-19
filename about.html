@@ -1,147 +1,353 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>About Me</title>
-    <link rel="stylesheet" href="styles.css">    
-    <link rel="icon" href="assets/logo_transparent.png">
-    <style>
-        body.crt {
-            padding-left: 38px;
-            padding-right: 38px;
-            position: relative;
-            min-height: 100vh;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about Me</title>
+  <style>
+    /* Base Styles - Mobile First */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', Courier, monospace;
+    }
 
-        body.crt::before,
-        body.crt::after {
-            content: '';
-            position: fixed;
-            top: 86px;
-            bottom: 0;
-            width: auto;
-            z-index: 0;
-        }
+    body {
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+      padding: 10px;
+    }
 
-        body.crt::before {
-            left: 38px;
-            background: linear-gradient(to right,
-                    #8bdffc 3px, 
-                    transparent 3px,
-                    transparent 23px,
-                    #8bdffc 23px,
-                    #8bdffc 23px, 
-                    transparent 26px);
-        }
+    /* CRT Effect */
+    .crt::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 2;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
 
-        body.crt::after {
-            right: 158px;
-            background: linear-gradient(to left,
-                    #8bdffc 3px, 
-                    transparent 3px,
-                    transparent 23px,
-                    #8bdffc 23px,
-                    #8bdffc 23px, 
-                    transparent 26px);
-        }
+    .crt::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
 
-        .header {
-            text-align: start;
-            margin-bottom: 40px;
-            margin-right: 120px;
-            border-bottom: 2px solid #8bdffc;
-            border-top: 2px solid #8bdffc;
-            border-left: 2px solid #8bdffc;
-            border-right: 2px solid #8bdffc;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-left: 10px;
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
+    .box {
+      border: 6px solid #00ff00;
+      min-height: 100px;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(20, 20, 20, 0.95);
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    }
 
-        .header h1 {
-            font-size: 2.5em;
-            text-shadow: 0 0 10px #8bdffc;
-            margin: 0;
-            position: relative;
+    .majorBag {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
 
-        }
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .header img {
-            float: right;
-            height: 60px;
-            background: #000000;
+    .picture-wrapper {
+      position: relative;
+      width: min-content;
+      margin-bottom: 10px;
+    }
 
-        }
+    .picture {
+      background-color: transparent;
+    }
 
-        .content {
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
+    .picture img {
+      width: 128px;
+      height: 128px;
+      border: 2px solid #0f0;
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    }
 
-        .nav-boxes {
-            position: fixed;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            top: 90px;
-        }
+    #bottom-text {
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-wrap: nowrap;
+      width: fit-content;
+      text-align: center;
+      font-size: 16px;
+      color: rgb(255, 255, 255);
+      padding: 5px 15px;
+    }
 
-        .nav-box {
-            width: 100px;
-            padding: 5px;
-            border: 3px solid #8bdffc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 8px #8bdffc;
-            background: rgba(0, 0, 0, 0.7);
-        }
+    #goat {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
 
-        .nav-box:hover {
-            background: rgba(139, 223, 252, 0.5);
-            box-shadow: 0 0 15px #8bdffc;
-        }
-    </style>
+    #goat a img {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s;
+    }
+
+    #goat a:hover img {
+      transform: scale(1.2);
+    }
+
+    .EduExp {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 100%;
+    }
+
+    .topic {
+      font-size: 20px;
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      border-left: 3px solid #0f0;
+      background-color: rgba(30, 30, 30, 0.8);
+    }
+
+    .topic h2 {
+      color: #0f0;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .topic ul {
+      list-style-type: none;
+    }
+
+    .topic ul li {
+      margin: 10px 0;
+      font-size: 16px;
+      color: rgb(255, 255, 255);
+      padding-left: 15px;
+      position: relative;
+    }
+
+    .topic ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #0f0;
+    }
+
+    .topic p {
+      font-size: 16px;
+      color: rgb(255, 255, 255);
+      text-align: justify;
+      padding: 10px 0;
+      line-height: 1.7;
+    }
+
+    .Hobbies {
+      margin-top: 20px;
+    }
+
+    .terminal-bar {
+      background-color: #0a0a0a;
+      padding: 8px 15px;
+      border-bottom: 2px solid #00ff00;
+      display: flex;
+      gap: 10px;
+      margin: -20px -20px 20px -20px;
+    }
+
+    .terminal-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn-red { background-color: #ff5f57; }
+    .btn-yellow { background-color: #ffbd2e; }
+    .btn-green { background-color: #28c940; }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #0f0;
+      position: relative;
+      animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 0 0 #0f0; }
+      25% { text-shadow: -2px 0 #f00, 2px 0 #00f; }
+      50% { text-shadow: 0 0 #0f0; }
+      75% { text-shadow: 2px 0 #f00, -2px 0 #00f; }
+      100% { text-shadow: 0 0 #0f0; }
+    }
+
+    /* Media Queries */
+    /* For tablets and larger */
+    @media (min-width: 768px) {
+      .majorBag {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 30px;
+      }
+      
+      .left {
+        min-width: 180px;
+      }
+      
+      .EduExp {
+        flex-direction: row;
+        gap: 30px;
+      }
+      
+      .topic {
+        flex: 1;
+      }
+      
+      .Hobbies .topic p {
+        column-count: 2;
+        column-gap: 30px;
+      }
+    }
+
+    /* For desktop/laptop screens */
+    @media (min-width: 1024px) {
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      
+      .box {
+        max-width: 1000px;
+        width: 90%;
+      }
+      
+      .Hobbies .topic p {
+        column-count: 3;
+      }
+    }
+
+    /* For very small screens */
+    @media (max-width: 480px) {
+      .picture img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      #bottom-text {
+        font-size: 14px;
+      }
+      
+      .topic h2 {
+        font-size: 20px;
+      }
+      
+      .topic ul li {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body class="crt">
-    <div id="noise"></div>
-
-    <header class="header">
-        <h1>About me</h1>
-        <img src="assets/logo_transparent.png" alt="Lucas Logo">
-    </header>
-
-    <div class="content">
-        <div style="text-align: justify;">
-            <img src="assets\eu.png" height="300" width="auto" alt="A fat Yoshi from the Super Mario franchise." style="border-radius: 9px;">
-            <figcaption style="color: white; text-align: center;">Me.</figcaption>
-            <p style="color: white; margin: 0; padding-top: 2px; padding-left: 2px; ">My name is Lucas and I have a <a href="https://sigarra.up.pt/fcup/en/CUR_GERAL.CUR_VIEW?pv_ano_lectivo=2021&pv_curso_id=865&pv_origem=CUR&pv_tipo_cur_sigla=L" style="color: #fa9790;">Bachelor's degree in Chemistry @FCUP</a>.</p>
-            <p style="color: white; margin: 0; padding-top: 2px; padding-left: 2px; ">I'm currently attending the <a href="https://sigarra.up.pt/fcup/en/cur_geral.cur_view?pv_ano_lectivo=2023&pv_origem=CUR&pv_tipo_cur_sigla=M&pv_curso_id=958" style="color: #fa9790;">Master's degree in Chemistry @FCUP</a>.</p>
-            <p> </p>
-            <p style="color: white; margin: 0; padding-top: 2px; padding-left: 2px; ">Connect with me on <a href = "https://www.linkedin.com/in/jo%C3%A3omendes2k/" style="color: #fa9790;">LinkedIn</a>.</p>
+  <div class="box">
+    <div class="terminal-bar">
+      <div class="terminal-btn btn-red"></div>
+      <div class="terminal-btn btn-yellow"></div>
+      <div class="terminal-btn btn-green"></div>
+    </div>
+    
+    <h1>ABOUT ME</h1>
+    
+    <div class='majorBag'>
+      <div class="left">
+        <div class="picture-wrapper">
+          <div class="picture">
+            <img src="assets/eu.png" alt="João Mendes">
           </div>
+          <p id="bottom-text">João Mendes</p>
+        </div>
+        
+        <div id="goat">
+          <a href="https://github.com/LucasEspargueta">
+            <img src="assets/github.svg" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/jo%C3%A3omendes2k/">
+            <img src="assets/linkedin.svg" alt="LinkedIn">
+          </a>
+          <a href="https://orcid.org/0009-0005-2542-746X">
+            <img src="assets/ORCID.svg" alt="ORCID">
+          </a>
+        </div>
+      </div>
+      
+      <div class="EduExp">
+        <div class="topic">
+          <h2>Education</h2>
+          <ul>
+            <li>2020-2023 - Bachelor's in Chemistry @ UPORTO</li>
+            <li>2023-2025 - Master's in Chemistry @ UPORTO</li>
+          </ul>
+        </div>
+        <div class="topic">
+          <h2>Experience</h2>
+          <ul>
+            <li>2020-2025 - NEQUP</li>
+            <li>2023-2025 - LAQV REQUIMTE</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="nav-boxes">
-        <div class="nav-box" onclick="window.location.href='index.html'">Homepage</div>
-        <div class="nav-box" onclick="window.location.href='cv.html'">CV</div>
-        <div class="nav-box" onclick="window.location.href='projects.html'">Projects</div>
-
+    <div class="Hobbies">
+      <div class="topic">
+        <h2>Hobbies & Interests</h2>
+        <p>When I'm not immersed in chemistry, I love exploring nature - hiking through forests and mountains. Music is another passion of mine, with Twenty One Pilots and Tame Impala being my favorite artists 
+          - their creativity and lyrics really speak to me. I'm also a big fan of TV series, especially Breaking Bad, Better Call Saul, and Severance for 
+          their brilliant storytelling and complex characters. Gaming is my way to unwind, with Minecraft's endless creativity and the immersive post-apocalyptic 
+          worlds of the Fallout series being my top choices. I also dabble a little in programming, mostly as a hobby, but I find it fascinating how it intersects with science. 
+          There’s a lot more I could write here, but I think it would be better to talk about it in person!</p>
+      </div>  
     </div>
-
-    <script src="crt-effect.js"></script>
+  </div>
 </body>
-
 </html>
